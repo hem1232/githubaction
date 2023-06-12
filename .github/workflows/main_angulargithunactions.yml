@@ -20,12 +20,13 @@ jobs:
         with:
           node-version: '16.x'
 
-      - name: npm install, build, and test
+      - name: Install dependencies
         working-directory: angular1
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+        run: npm ci
+
+      - name: Build Angular app
+        working-directory: angular1
+        run: ng build --prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
