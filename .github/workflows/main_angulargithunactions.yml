@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./dist
+          path: ./angular1/dist
 
   deploy:
     runs-on: ubuntu-latest
