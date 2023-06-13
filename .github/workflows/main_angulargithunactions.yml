@@ -57,4 +57,4 @@ jobs:
           app-name: 'angulargithunactions'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97E2CAC3A8DB47D7B817D038B0BF8F92 }}
-          package: ${{ github.workspace }}/node-app
+          package: ./angular1/dist/
