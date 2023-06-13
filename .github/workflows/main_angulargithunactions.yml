@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - angulargithunactions
+name: Build and deploy Node.js app to Azure Web App - gitaction
 env:
    PACKAGE_PATH: '.'
 on:
@@ -55,5 +55,5 @@ jobs:
         with:
           app-name: 'gitaction'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97E2CAC3A8DB47D7B817D038B0BF8F92 }}
+          publish-profile: ${{ secrets.GITHUBACTION }}
           package:  ${{ github.workspace }}/*
