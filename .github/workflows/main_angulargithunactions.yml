@@ -53,7 +53,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'angulargithunactions'
+          app-name: 'gitaction'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97E2CAC3A8DB47D7B817D038B0BF8F92 }}
           package:  ${{ github.workspace }}/*
