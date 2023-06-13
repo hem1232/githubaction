@@ -2,7 +2,8 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy Node.js app to Azure Web App - angulargithunactions
-
+env:
+   PACKAGE_PATH: '.'
 on:
   push:
     branches:
@@ -35,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./angular1/dist/
+          path: ${{env.DOTNET_ROOT}}/app
 
   deploy:
     runs-on: ubuntu-latest
@@ -57,4 +58,4 @@ jobs:
           app-name: 'angulargithunactions'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97E2CAC3A8DB47D7B817D038B0BF8F92 }}
-          package: ${{ github.workspace }}/artifact/**/*
+          package: ${{ env.PACKAGE_PATH }}
