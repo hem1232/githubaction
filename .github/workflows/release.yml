@@ -10,10 +10,10 @@ on:
 
 jobs:
   deploy:
-    runs-on: windows-2022
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    runs-on: ubantu-latest
+    #environment:
+      #name: 'Production'
+      #url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
