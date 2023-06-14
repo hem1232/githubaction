@@ -36,3 +36,4 @@ jobs:
         with:
           name: node-app
           path: ./angular1/dist
+          retention-days: 1
