@@ -34,4 +34,4 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Production'
           publish-profile: ${{ secrets.GITHUBACTION }}
-          package:  ${{ github.workspace }}/*
+          package:  ${{ github.workspace }}/githubaction/*
