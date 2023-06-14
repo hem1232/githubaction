@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-2022
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
@@ -20,7 +20,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-          path: ./angular1/dist
+          path: ${{ github.workspace }}/*
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
