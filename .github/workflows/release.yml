@@ -15,11 +15,11 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download artifact checkout
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.workflow_run.head_commit.id }}
-          repository: ${{ github.event.workflow_run.head_repository.full_name }}
+      #- name: Download artifact checkout
+        #uses: actions/checkout@v2
+        #with:
+          #ref: ${{ github.event.workflow_run.head_commit.id }}
+          #repository: ${{ github.event.workflow_run.head_repository.full_name }}
         
       #- name: Download artifact from build job
         #uses: actions/download-artifact@v2
@@ -34,4 +34,4 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Production'
           publish-profile: ${{ secrets.GITHUBACTION }}
-          package:  ${{ github.workspace }}/githubaction/*
+          package:  ${{ github.workspace }}/*
