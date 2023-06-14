@@ -15,6 +15,9 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Download artifact checkout
+        uses: actions/checkout@v2
+        
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
