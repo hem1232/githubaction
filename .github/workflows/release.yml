@@ -21,11 +21,11 @@ jobs:
           ref: ${{ github.event.workflow_run.head_commit.id }}
           repository: ${{ github.event.workflow_run.head_repository.full_name }}
         
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: node-app
-          path: ./angular1/dist
+      #- name: Download artifact from build job
+        #uses: actions/download-artifact@v2
+        #with:
+          #name: node-app
+          #path: ./angular1/dist
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
