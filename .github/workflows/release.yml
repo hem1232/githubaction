@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubantu-latest
+    runs-on: ubuntu-latest
     #environment:
       #name: 'Production'
       #url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
