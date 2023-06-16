@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp prod1
+        id: deploy-to-webapp-prod1
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'gitaction'
