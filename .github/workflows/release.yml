@@ -27,15 +27,15 @@ jobs:
   deploy-prod1:
     runs-on: windows-2022
     environment:
-      name: 'Production 1'
+      name: 'Test'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp-prod1
+        id: deploy-to-webapp-Test
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'gitaction'
-          slot-name: 'Production 1'
+          slot-name: 'Test'
           publish-profile: ${{ secrets.GITHUBACTION }}
           package:  ${{ github.workspace }}        
