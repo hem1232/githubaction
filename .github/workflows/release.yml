@@ -24,7 +24,7 @@ jobs:
           publish-profile: ${{ secrets.GITHUBACTION }}
           package:  ${{ github.workspace }}
           
-  deploy-prod1:
+  deploy-Test:
     runs-on: windows-2022
     environment:
       name: 'Test'
