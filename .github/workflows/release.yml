@@ -25,6 +25,7 @@ jobs:
           package:  ${{ github.workspace }}     
           
   Production:
+    needs: Dev
     runs-on: windows-2022
     environment:
       name: 'Production'
