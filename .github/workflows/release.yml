@@ -9,7 +9,7 @@ on:
 
 jobs:
   Test:
-    runs-on: ubuntu-latest
+    runs-on: windows-2022
     environment:
       name: 'Test'
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
