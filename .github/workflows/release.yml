@@ -8,8 +8,8 @@ on:
       - completed
 
 jobs:
-  Dev:
-    runs-on: windows-2022
+  Test:
+    runs-on: ubuntu-latest
     environment:
       name: 'Test'
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
@@ -25,7 +25,7 @@ jobs:
           package:  ${{ github.workspace }}     
           
   Production:
-    needs: Dev
+    needs: Test
     runs-on: windows-2022
     environment:
       name: 'Production'
@@ -39,4 +39,4 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Production'
           publish-profile: ${{ secrets.GITHUBACTION }}
-          package:  ${{ github.workspace }}/*      
+          package:  ${{ github.workspace }}
