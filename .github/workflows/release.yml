@@ -36,6 +36,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'gitaction'
-          slot-name: 'Test'
+          slot-name: 'gitaction-Test'
           publish-profile: ${{ secrets.GITHUBACTION }}
           package:  ${{ github.workspace }}        
