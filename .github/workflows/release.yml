@@ -37,5 +37,5 @@ jobs:
         with:
           app-name: 'gitaction/Test'
           slot-name: 'Test'
-          publish-profile: ${{ secrets.GITHUBACTION }}
+          publish-profile: ${{ secrets.TEST }}
           package:  ${{ github.workspace }}        
