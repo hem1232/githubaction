@@ -28,7 +28,7 @@ jobs:
     runs-on: windows-2022
     environment:
       name: 'Test'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
 
     steps:
       - name: 'Deploy to Azure Web App'
