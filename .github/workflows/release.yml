@@ -22,7 +22,7 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Test'
           publish-profile: ${{ secrets.TEST }}
-          package: D:\a\githubaction\*     
+          package: ./angular1/dist/     
           
   Production:
     needs: Test
