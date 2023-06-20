@@ -2,8 +2,6 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actionss
 
 name: Build-Angular
-env:
-   PACKAGE_PATH: '.'
 on:
   push:
     branches:
