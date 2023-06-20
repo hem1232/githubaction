@@ -19,7 +19,6 @@ jobs:
         id: deploy-to-webapp-Test
         uses: azure/webapps-deploy@v2
         with:
-          working-directory: angular1
           app-name: 'gitaction'
           slot-name: 'Test'
           publish-profile: ${{ secrets.TEST }}
