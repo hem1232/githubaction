@@ -1,5 +1,5 @@
-
 name: Release
+
 on:
   workflow_run:
     workflows:
@@ -12,27 +12,27 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
-      url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
+      url: ${{ needs.Build-Angular.outputs.deploy-to-webapp-Test.outputs.webapp-url }}
 
     steps:
-      - name: 'Deploy to Azure Web App'
+      - name: 'Deploy to Azure Web App (Test)'
         id: deploy-to-webapp-Test
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'gitaction'
           slot-name: 'Test'
           publish-profile: ${{ secrets.TEST }}
-          package: ${{ github.workspace }}     
+          package: ${{ github.workspace }}
           
   Production:
     needs: Test
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ needs.Test.outputs.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: 'Deploy to Azure Web App'
+      - name: 'Deploy to Azure Web App (Production)'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
