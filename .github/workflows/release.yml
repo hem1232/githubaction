@@ -5,7 +5,7 @@ on:
     workflows:
       - Build-Angular
     types:
-      - success
+      - completed
 
 jobs:
   Test:
