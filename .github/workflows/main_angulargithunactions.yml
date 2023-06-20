@@ -50,4 +50,4 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Production'
           publish-profile: ${{ secrets.GITHUBACTION }}
-          package: ${{ github.workspace }}/node-app.zip
+          package: ${{ github.workspace }}
