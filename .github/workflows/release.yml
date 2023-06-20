@@ -22,7 +22,7 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Test'
           publish-profile: ${{ secrets.TEST }}
-          package:  ${{ github.workspace }}     
+          package: D:\a\githubaction\*     
           
   Production:
     needs: Test
@@ -39,4 +39,4 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Production'
           publish-profile: ${{ secrets.GITHUBACTION }}
-          package:  ${{ github.workspace }}
+          package: ${{ github.workspace }}
