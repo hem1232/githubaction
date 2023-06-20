@@ -26,7 +26,6 @@ jobs:
           
   Production:
     needs: Test
-    if: ${{ success() }}
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
