@@ -9,7 +9,7 @@ on:
 
 jobs:
   Test:
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     environment:
       name: 'Test'
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
@@ -22,11 +22,11 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Test'
           publish-profile: ${{ secrets.TEST }}
-          package: ./angular1/dist/     
+          package: ${{ github.workspace }}     
           
   Production:
     needs: Test
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
