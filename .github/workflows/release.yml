@@ -16,12 +16,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: alextompkins/download-prior-artifact@v1
+      - name: Download last artifact
+        uses: blablacar/action-download-last-artifact@master
         with:
-           name: node-app
-           #path: path/to/artifact
-        env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: my-artifact
       - name: Display structure of downloaded files
         run: ls -R
            
