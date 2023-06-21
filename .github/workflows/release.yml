@@ -15,9 +15,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-          
       - name: Print workspace directory
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
