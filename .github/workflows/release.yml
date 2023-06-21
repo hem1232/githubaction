@@ -26,8 +26,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-          workflow: Build-Angular.yml
-          run-id: ${{ needs.Build-Angular.outputs.run-id }}
+          path: ${{ github.workspace }}
+          repository: ${{ github.repository }}
+          ref: ${{ github.event.workflow_run.head_sha }}
           
       - name: Print workspace directory
         run: |
