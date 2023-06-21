@@ -18,11 +18,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
-      - name: Print dist folder files
+      - name: Print workspace contents
         run: |
-          echo "List of files in dist folder:"
-          cd ${{ github.workspace }}/angular1
-          ls -a dist
+          echo "Workspace directory: ${{ github.workspace }}"
+          echo "Contents of workspace:"
+          ls -a ${{ github.workspace }}
 
           
       - name: 'Deploy to Azure Web App'
