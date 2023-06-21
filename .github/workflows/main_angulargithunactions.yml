@@ -40,3 +40,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
+          
+      - name: Print dist folder files
+        run: |
+          echo "List of files in dist folder:"
+          ls -a ${{ github.workspace }}
