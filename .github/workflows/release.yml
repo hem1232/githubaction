@@ -15,7 +15,7 @@ jobs:
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
 
     steps:
-      - uses: actions/checkout@v2
+      #- uses: actions/checkout@v2
       - name: Download last artifact
         uses: blablacar/action-download-last-artifact@master
         with:
