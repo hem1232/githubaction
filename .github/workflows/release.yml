@@ -22,13 +22,13 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
-          path: ${{ github.workspace }}/angular1/dist
+          path: ${{ github.workspace }}/angular1/dist/angular1
           
       - name: Print workspace contents
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
           echo "Contents of workspace:"
-          ls -a ${{ github.workspace }}
+          ls -a ${{ github.workspace }}/angular1/dist/angular1
 
           
       - name: 'Deploy to Azure Web App'
