@@ -15,10 +15,13 @@ jobs:
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - uses: actions/checkout@v2
+      - uses: alextompkins/download-prior-artifact@v1
         with:
            name: node-app
+           #path: path/to/artifact
+      - name: Display structure of downloaded files
+        run: ls -R
            
       - name: Print workspace directory
         run: |
