@@ -35,7 +35,7 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Test'
           publish-profile: ${{ secrets.TEST }}
-          package: ${{ github.workspace }}     
+          package: ${{ github.workspace }}/angular1   
           
   Production:
     needs: Test
