@@ -20,8 +20,10 @@ jobs:
         
       - name: Print dist folder files
         run: |
-          echo "List of files in dist/angular1 folder:"
-          ls -a ${{ github.workspace }}/angular1/dist/angular1
+          echo "List of files in dist folder:"
+          cd ${{ github.workspace }}/angular1
+          ls -a dist
+
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp-Test
