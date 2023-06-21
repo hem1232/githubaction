@@ -15,6 +15,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
 
     steps:
+    
+      - name: Print dist folder files
+        run: |
+          echo "List of files in dist folder:"
+          ls -a ${{ github.workspace }}
+          
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp-Test
         uses: azure/webapps-deploy@v2
