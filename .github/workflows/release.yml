@@ -15,7 +15,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
 
     steps:
-      #- uses: actions/checkout@v2
       - name: Download last artifact
         uses: blablacar/action-download-last-artifact@master
         with:
@@ -23,11 +22,6 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
            
-      - name: Print workspace directory
-        run: |
-          echo "Workspace directory: ${{ github.workspace }}"
-          echo "Contents of workspace:"
-          ls -a ${{ github.workspace }}/angular1
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp-Test
         uses: azure/webapps-deploy@v2
@@ -45,8 +39,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Download last artifact
+        uses: blablacar/action-download-last-artifact@master
+        with:
+         name: node-app
+      - name: Display structure of downloaded files
+        run: ls -R
         
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -55,4 +53,4 @@ jobs:
           app-name: 'gitaction'
           slot-name: 'Production'
           publish-profile: ${{ secrets.GITHUBACTION }}
-          package: ${{ github.workspace }}
+          package: ${{ github.workspace }}/angular1
