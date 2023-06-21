@@ -18,6 +18,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+      - name: Build Angular app
+        working-directory: angular1
+        run: ng build --prod
+        
       - name: Print workspace directory
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
