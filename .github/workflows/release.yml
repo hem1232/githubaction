@@ -5,6 +5,7 @@ on:
       - Build-Angular
     types:
       - completed
+      - success
 
 jobs:
   Test:
