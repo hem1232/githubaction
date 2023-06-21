@@ -8,6 +8,29 @@ on:
       - success
   
 jobs:
+  Dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: 'Dev'
+      url: ${{ steps.deploy-to-webapp-dev.outputs.webapp-url }}
+
+    steps:
+      - name: Download last artifact
+        uses: blablacar/action-download-last-artifact@master
+        with:
+          name: node-app
+      - name: Display structure of downloaded files
+        run: ls -R
+           
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp-Test
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'gitaction'
+          slot-name: 'Dev'
+          publish-profile: ${{ secrets.Dev }}
+          package: ${{ github.workspace }}/angular1
+          
   Test:
     runs-on: ubuntu-latest
     environment:
