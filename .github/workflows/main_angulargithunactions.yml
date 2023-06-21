@@ -49,5 +49,5 @@ jobs:
           
       - name: Print dist folder files
         run: |
-          echo "List of files in dist folder:"
-          ls -a ${{ github.workspace }}/angular1/dist
+          echo "List of files in dist/angular1 folder:"
+          ls -a ${{ github.workspace }}/angular1/dist/angular1
