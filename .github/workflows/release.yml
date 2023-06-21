@@ -57,7 +57,6 @@ jobs:
           package: ${{ github.workspace }}/angular1   
           
   Production:
-    needs: Test
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
