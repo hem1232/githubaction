@@ -13,6 +13,7 @@ permissions:
   
 jobs:
   Test:
+    needs: main_angulargithunactions.build
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
@@ -22,6 +23,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+      - name: Download artifacts from Build-Angular
+        uses: actions/download-artifact@v2
+        with:
+          name: node-app
+          path: ./angular1/dist
+          
       - name: Print workspace directory
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
