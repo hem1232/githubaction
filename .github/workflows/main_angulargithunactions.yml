@@ -41,7 +41,8 @@ jobs:
         with:
           name: node-app
           
-      - name: Print dist folder files
+      - name: Debug workspace
         run: |
-          echo "List of files in dist folder:"
-          ls -a ${{ github.workspace }}/angular1/dist
+          echo "Workspace directory: ${{ github.workspace }}"
+          echo "Contents of workspace:"
+          ls -a ${{ github.workspace }}
