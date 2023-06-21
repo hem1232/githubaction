@@ -29,25 +29,27 @@ jobs:
         working-directory: angular1
         run: ng build --prod
 
-      - name: Upload artifact for deployment job
+      #- name: Upload artifact for deployment job
+        #uses: actions/upload-artifact@v2
+        #with:
+          #name: node-app
+          #path: ./angular1/dist
+          #retention-days: 1
+          
+      #- name: Download artifact from build job
+        #uses: actions/download-artifact@v2
+        #with:
+          #name: node-app
+          
+      - name: Archive build artifacts
+        run: |
+          mkdir dist-artifact
+          cp -R ./angular1/dist/. dist-artifact
+          echo "::set-output name=dist-folder::dist-artifact"
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: node-app
-          path: ./angular1/dist
-          retention-days: 1
-          
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: node-app
-          
-      - name: Debug workspace
-        run: |
-          echo "Workspace directory: ${{ github.workspace }}"
-          echo "Contents of workspace:"
-          ls -a ${{ github.workspace }}
-          
-      - name: Print dist folder files
-        run: |
-          echo "List of files in dist/angular1 folder:"
-          ls -a ${{ github.workspace }}/angular1/dist/angular1
+          name: dist-artifact
+          path: ${{ github.workspace }}/dist-artifact
+     
