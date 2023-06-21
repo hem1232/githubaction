@@ -18,6 +18,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+      - name: Download Build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+          workflow: Build-Angular.yml
+          run-id: ${{ needs.Build-Angular.outputs.run-id }}
+          
       - name: Print workspace directory
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
