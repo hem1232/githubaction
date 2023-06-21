@@ -19,7 +19,7 @@ jobs:
       - name: Download last artifact
         uses: blablacar/action-download-last-artifact@master
         with:
-          name: my-artifact
+          name: node-app
       - name: Display structure of downloaded files
         run: ls -R
            
