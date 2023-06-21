@@ -15,7 +15,7 @@ jobs:
       url: ${{ steps.deploy-to-webapp-test.outputs.webapp-url }}
 
     steps:
-      - uses: aochmann/actions-download-artifact@1.0.0
+      - uses: actions/download-artifact@v3
         with:
            name: node-app
            
