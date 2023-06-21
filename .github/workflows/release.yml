@@ -24,6 +24,11 @@ jobs:
           name: build-artifacts
           path: ${{ github.workspace }}/angular1/dist
           
+      - name: Print dist folder files
+        run: |
+          echo "List of files in dist/angular1 folder:"
+          ls -a ${{ github.workspace }}/angular1/dist/angular1
+          
       - name: Print workspace contents
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
