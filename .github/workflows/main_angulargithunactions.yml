@@ -52,12 +52,4 @@ jobs:
         run: |
           echo "List of files in dist/angular1 folder:"
           ls -a ${{ github.workspace }}/angular1/dist/angular1
-          
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp-Test
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'gitaction'
-          slot-name: 'Test'
-          publish-profile: ${{ secrets.TEST }}
-          package: ${{ github.workspace }}/angular1/dist/angular1     
+           
