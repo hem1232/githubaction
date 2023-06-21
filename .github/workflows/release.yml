@@ -18,11 +18,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
-      - name: Download artifacts
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: node-app
+          path: ./angular1/dist
+          retention-days: 1
+          
+      - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: build-artifacts
-          path: ${{ github.workspace }}/angular1/dist
+          name: node-app
           
       - name: Print dist folder files
         run: |
