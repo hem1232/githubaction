@@ -18,6 +18,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+      - name: Transfer artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: ${{ github.workspace }}/angular1/dist
+          
       - name: Print workspace contents
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
