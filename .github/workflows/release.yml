@@ -22,14 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
-      - name: Download Build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: node-app
-          path: ${{ github.workspace }}
-          repository: ${{ github.repository }}
-          ref: ${{ github.event.workflow_run.head_sha }}
-          
       - name: Print workspace directory
         run: |
           echo "Workspace directory: ${{ github.workspace }}"
