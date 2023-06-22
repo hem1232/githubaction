@@ -9,7 +9,7 @@ on:
   
 jobs:
   Dev:
-    if: github.ref_name == 'dev1'
+    if: ${{ github.event_name == 'push' && contains( github.ref_name, 'dev1') }}
     runs-on: ubuntu-latest
     environment:
       name: 'Dev'
@@ -36,7 +36,7 @@ jobs:
           package: ${{ github.workspace }}/angular1
           
   Test:
-    if: github.ref_name == 'main'
+    if: ${{ github.event_name == 'push' && contains( github.ref_name, 'main') }}
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
@@ -63,7 +63,7 @@ jobs:
           package: ${{ github.workspace }}/angular1   
           
   Production:
-    if: github.ref_name == 'dev1'
+    if: ${{ github.event_name == 'push' && contains( github.ref_name, 'dev1') }}
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
