@@ -85,7 +85,18 @@ jobs:
          name: node-app
       - name: Display structure of downloaded files
         run: ls -R
-        
+          
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: hem1232
+          minimum-approvals: 1
+          issue-title: "Deploying v1.3.5 to prod from staging"
+          issue-body: "Please approve or deny the deployment of version v1.3.5."
+          exclude-workflow-initiator-as-approver: false
+          additional-approved-words: ''
+          additional-denied-words: ''
+          
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -94,36 +105,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.GITHUBACTION }}
           package: ${{ github.workspace }}/angular1
-          
-      - name: Manual Approval
-        id: approval
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { data } = await context.github.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              head: context.sha,
-              state: 'open',
-            });
-            if (data.length === 0) {
-              console.log('No open pull requests found. Skipping approval.');
-              process.exit(0);
-            }
-            const { number: pullNumber } = data[0];
-            const { data: reviews } = await context.github.pulls.listReviews({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pullNumber,
-              per_page: 100,
-            });
-            const approvedReviews = reviews.filter(review => review.state === 'APPROVED');
-            if (approvedReviews.length === 0) {
-              console.log('No approved reviews found. Skipping deployment.');
-              process.exit(0);
-            }
-            console.log('Deployment approved.');
-
-      - name: Check Approval
-        run: echo ${{ steps.approval.outputs.result }}
