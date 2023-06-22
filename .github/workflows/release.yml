@@ -8,8 +8,17 @@ on:
       - success
   
 jobs:
+  set:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Set output
+          id: vars
+          run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+        - name: Check output
+          run: echo ${{ steps.vars.outputs.short_ref }}
   Dev:
-    if: github.ref_name == 'dev'
+    if: ${{ github.event_name == 'push' && contains( github.ref_name, 'dev1') }}
     runs-on: ubuntu-latest
     environment:
       name: 'Dev'
@@ -36,7 +45,7 @@ jobs:
           package: ${{ github.workspace }}/angular1
           
   Test:
-    if: github.ref_name == 'main'
+    if: ${{ github.event_name == 'push' && contains( github.ref_name, 'main') }}
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
@@ -63,7 +72,7 @@ jobs:
           package: ${{ github.workspace }}/angular1   
           
   Production:
-    if: github.ref_name == 'dev'
+    if: ${{ github.event_name == 'push' && contains( github.ref_name, 'dev1') }}
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
