@@ -55,4 +55,4 @@ jobs:
           ls -a ${{ github.workspace }}/angular1/dist/angular1
            
       - name: Print Head Ref
-        run: echo "${{ github.head_ref }}"
+        run: echo "${{ github.ref_name }}"
