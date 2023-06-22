@@ -9,7 +9,7 @@ on:
   
 jobs:
   Dev:
-    if: github.ref == refs/heads/dev
+    if: ${{ github.ref == 'refs/heads/dev' }}
     runs-on: ubuntu-latest
     environment:
       name: 'Dev'
@@ -33,7 +33,7 @@ jobs:
           package: ${{ github.workspace }}/angular1
           
   Test:
-    if: github.ref == refs/heads/main
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
