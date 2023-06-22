@@ -9,7 +9,7 @@ on:
   
 jobs:
   Dev:
-    if: github.ref_name == 'main'
+    if: github.ref_name == 'dev'
     runs-on: ubuntu-latest
     environment:
       name: 'Dev'
