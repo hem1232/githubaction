@@ -1,0 +1,40 @@
+name: Release
+on:
+  push:
+    branches:
+      - dev
+  workflow_run:
+    workflows:
+      - Build-Angular
+    types:
+      - completed
+      - success
+  
+jobs:
+  Dev:
+    if: github.ref_name == 'dev'
+    runs-on: ubuntu-latest
+    environment:
+      name: 'Dev'
+      url: ${{ steps.deploy-to-webapp-dev.outputs.webapp-url }}
+
+    steps:
+      - name: Print Head Ref
+        run: echo "${{ github.ref_name }}"
+        
+      - name: Download last artifact
+        uses: blablacar/action-download-last-artifact@master
+        with:
+          name: node-app
+      - name: Display structure of downloaded files
+        run: ls -R
+           
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp-Dev
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'gitaction'
+          slot-name: 'Dev'
+          publish-profile: ${{ secrets.Dev }}
+          package: ${{ github.workspace }}/angular1
+          
