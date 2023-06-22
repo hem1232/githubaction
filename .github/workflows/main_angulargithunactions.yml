@@ -54,5 +54,9 @@ jobs:
           echo "List of files in dist/angular1 folder:"
           ls -a ${{ github.workspace }}/angular1/dist/angular1
            
-      - name: Print Head Ref
-        run: echo "${{ github.base_ref }}"
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+      - name: Check output
+        run: echo ${{ steps.vars.outputs.short_ref }}
