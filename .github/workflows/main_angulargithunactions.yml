@@ -5,9 +5,8 @@ name: Build-Angular
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-      - dev1
+    branches: 
+      - '**'
 
 jobs:
   build:
