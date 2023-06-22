@@ -23,7 +23,7 @@ jobs:
         run: ls -R
            
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp-Test
+        id: deploy-to-webapp-Dev
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'gitaction'
