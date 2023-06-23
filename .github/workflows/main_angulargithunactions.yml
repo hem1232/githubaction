@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - main
-      - dev
+      - dev1
 
 jobs:
   build:
