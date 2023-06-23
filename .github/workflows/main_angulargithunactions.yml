@@ -20,7 +20,7 @@ jobs:
         with:
           scope: '@wk'
           registry: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
-          auth-token: ${{ secret.JFROG }}
+          auth-token: ${{ secrets.JFROG }}
           
       - name: Install jQuery
         run: npm install @wk/components
