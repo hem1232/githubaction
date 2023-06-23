@@ -14,18 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Connect to Artifactory
-        uses: Deepakanandrao/jfrog-cli@v3
+      - name: Ping Artifactory
+        uses: katcosgrove/jfrog-actions@master
         with:
-          cli_cmd: |                                      # commands to be excuted
-            'jfrog rt ping'
-        env:  
-          SERVER_URL: https://gpo.jfrog.io/artifactory
-          ACCESS_TYPE: ${{ secrets.JFROG }}         # Required  (username-password, access-token, api-key)
-          #USERNAME: ${{ secrets.USERNAME }}               # Required any of one of the following
-          #PASSWORD: ${{ secrets.PASSWORD }}
-          API_KEY: ${{ secrets.JFROG }}
-          #ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
+            cmd: 'ping'
+        env:
+            auth: ${{ secrets.JFROG }}
+            apikey: ${{ secrets.JFROG }}
+            url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
           
       - name: Check JFrog service connection
         run: |
