@@ -17,11 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Authenticate with npm
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.JFROG }}  # Replace with your secret name
-        run: |
-          echo "//https://gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${NPM_AUTH_TOKEN}" >> angular1/.npmrc
+      - uses: digitalvisioncz/npmrc-github-action@v1
+        with:
+          token: 'AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf'
+          registryUrl: '//gpo.jfrog.io/gpo/api/npm/npm-local/'
           
       - name: Set up Node.js version
         uses: actions/setup-node@v1
