@@ -45,7 +45,7 @@ jobs:
           package: ${{ github.workspace }}/angular1
           
   Test:
-    if: github.ref_name == 'main'
+    if: github.ref_name == 'dev1'
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
