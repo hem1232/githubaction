@@ -14,25 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping Artifactory
-        uses: katcosgrove/jfrog-actions@master
-        with:
-            cmd: 'ping'
-        env:
-            auth: ${{ secrets.JFROG }}
-            apikey: ${{ secrets.JFROG }}
-            url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
-          
-      - name: Check JFrog service connection
-        run: |
-          npm view @wk/components
-          
-      - uses: actions/checkout@v2
-      - name: Set up Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-          
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
