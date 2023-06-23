@@ -45,7 +45,7 @@ jobs:
           package: ${{ github.workspace }}/angular1
           
   Test:
-    if: github.ref_name == 'main'
+    if: github.ref_name == 'dev1'
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
@@ -72,7 +72,7 @@ jobs:
           package: ${{ github.workspace }}/angular1   
           
   Production:
-    if: github.ref_name == 'main'
+    needs: [Test]
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
@@ -85,7 +85,18 @@ jobs:
          name: node-app
       - name: Display structure of downloaded files
         run: ls -R
-        
+          
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: hem1232
+          minimum-approvals: 1
+          issue-title: "Deploying v1.3.5 to prod from staging"
+          issue-body: "Please approve or deny the deployment of version v1.3.5."
+          exclude-workflow-initiator-as-approver: false
+          additional-approved-words: ''
+          additional-denied-words: ''
+          
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
