@@ -20,7 +20,7 @@ jobs:
           cli_cmd: |                                      # commands to be excuted
             'jfrog rt ping'
         env:  
-          SERVER_URL: https://gpo.jfrog.io/gpo/api/npm/npm-local/
+          SERVER_URL: https://gpo.jfrog.io/artifactory
           ACCESS_TYPE: ${{ secrets.JFROG }}         # Required  (username-password, access-token, api-key)
           #USERNAME: ${{ secrets.USERNAME }}               # Required any of one of the following
           #PASSWORD: ${{ secrets.PASSWORD }}
