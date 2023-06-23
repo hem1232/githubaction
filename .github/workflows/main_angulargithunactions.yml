@@ -18,11 +18,11 @@ jobs:
         run: npm install -g @angular/cli
 
       - name: Install dependencies
-        #working-directory: angular1
+        working-directory: 'angular1'
         run: npm install
 
       - name: Build Angular app
-        #working-directory: angular1
+        working-directory: angular1
         run: ng build --prod
 
       - name: Upload artifact for deployment job
