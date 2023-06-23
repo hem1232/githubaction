@@ -1,10 +1,11 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More GitHub Actions for Azure: https://github.com/Azure/actionss
 
 name: Build-Angular
 on:
+  workflow_dispatch:
   push:
-    branches:
+    branches: 
       - main
       - dev1
 
@@ -14,12 +15,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+          
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
       - name: Install dependencies
-        working-directory: ./angular1
-        run: npm install
+        working-directory: angular1
+        run: npm ci
 
       - name: Build Angular app
         working-directory: angular1
@@ -48,5 +55,9 @@ jobs:
           echo "List of files in dist/angular1 folder:"
           ls -a ${{ github.workspace }}/angular1/dist/angular1
            
-      - name: Print Head Ref
-        run: echo "${{ github.base_ref }}"
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+      - name: Check output
+        run: echo ${{ steps.vars.outputs.short_ref }}
