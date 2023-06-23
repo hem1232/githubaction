@@ -17,14 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Authenticate with npm
-        env:
-          NPM_AUTH_TOKEN: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf  # Replace with your secret name
+      - name: 'Create .npmrc'
+        shell: bash
         run: |
-          npm config set registry https://gpo.jfrog.io/gpo/api/npm/npm-local
-          echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> angular1/.npmrc
-          echo "always-auth=true" >> angular1/.npmrc
-          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${NPM_AUTH_TOKEN}" >> angular1/.npmrc
+          echo "registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" > angular1/.npmrc
+          echo "_auth = ${{ secrets.JFROG }}" >> angular1/.npmrc
+          echo "always-auth = true" >> angular1/.npmrc
           
       - name: Install jQuery
         run: npm install @wk/components
