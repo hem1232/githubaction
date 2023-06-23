@@ -20,7 +20,10 @@ jobs:
       - uses: digitalvisioncz/npmrc-github-action@v1
         with:
           token: 'AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf'
-          registryUrl: '//gpo.jfrog.io/gpo/api/npm/npm-local/'
+          registryUrl: 'gpo.jfrog.io/gpo/api/npm/npm-local/'
+          
+      - name: View Package Details
+        run: npm view "@wk/components"
           
       - name: Set up Node.js version
         uses: actions/setup-node@v1
