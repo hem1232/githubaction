@@ -17,9 +17,9 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
-      #- name: Install dependencies
-        #working-directory: angular1
-        #run: npm install
+      - name: Install dependencies
+        working-directory: angular1
+        run: npm install
 
       - name: Build Angular app
         working-directory: angular1
