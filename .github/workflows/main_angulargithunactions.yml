@@ -23,9 +23,9 @@ jobs:
           npm config set registry https://gpo.jfrog.io/gpo/api/npm/npm-local/
           cat angular1/.npmrc
           
-      - name: View Package Details
-        run: npm view "@wk/components"
-          
+      - name: Install jQuery
+        run: npm install @wk/components
+        
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
