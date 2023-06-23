@@ -16,6 +16,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Authenticate with npm
+        run: |
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local//:_authToken=\AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> angular1/.npmrc
+          npm config set registry https://gpo.jfrog.io/gpo/api/npm/npm-local/
+          cat angular1/.npmrc
+          
+      - name: Install jQuery
+        run: npm install @wk/components
+        
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
