@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: https://gpo.jfrog.io/gpo/api/npm/npm-local/
+          JF_USER: hemant.choudhari
+          JF_PASSWORD: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
+          
       - uses: actions/checkout@v2
       - name: Set up Node.js version
         uses: actions/setup-node@v1
