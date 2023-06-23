@@ -16,10 +16,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: 'Create .npmrc'
-        shell: bash
-        run: |
-         curl -u${{ secrets.JFROG }} "https://gpo.jfrog.io/gpo/api/npm/npm-local/" > angular1/.npmrc 
+      - uses: healthplace/npmrc-registry-login-action@v1.0
+        with:
+          scope: '@wk'
+          registry: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
+          auth-token: ${{ secret.JFROG }}
+          
       - name: Install jQuery
         run: npm install @wk/components
         
