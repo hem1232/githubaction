@@ -14,18 +14,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
-      - name: 'Create .npmrc'
-        shell: bash
-        run: |
-         echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" > .npmrc
-         echo "_auth = ${{ secrets.JFROG }}" >> .npmrc
-         echo "always-auth = true" >> .npmrc
-          
-      - name: Authenticate JFrog
-        run: |
-          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" > .npmrc
-          echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> .npmrc
+      - name: Connect to Artifactory
+        uses: Deepakanandrao/jfrog-cli@v3
+        with:
+          cli_cmd: |                                      # commands to be excuted
+            'jfrog rt ping'
+        env:  
+          SERVER_URL: https://gpo.jfrog.io/gpo/api/npm/npm-local/
+          ACCESS_TYPE: ${{ secrets.JFROG }}         # Required  (username-password, access-token, api-key)
+          #USERNAME: ${{ secrets.USERNAME }}               # Required any of one of the following
+          #PASSWORD: ${{ secrets.PASSWORD }}
+          API_KEY: ${{ secrets.JFROG }}
+          #ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
           
       - name: Check JFrog service connection
         run: |
