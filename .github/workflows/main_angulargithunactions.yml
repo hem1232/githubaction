@@ -23,9 +23,7 @@ jobs:
         run: |
           echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> angular1/.npmrc
           echo "always-auth=true" >> angular1/.npmrc
-          echo "registry=https://registry.npmjs.org" >> angular1/.npmrc
-          echo "always-auth=false" >> angular1/.npmrc
-          echo "//registry.npmjs.org/:_authToken=\${NPM_AUTH_TOKEN}" >> angular1/.npmrc
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${NPM_AUTH_TOKEN}" >> angular1/.npmrc
           
       - name: Install jQuery
         run: npm install @wk/components
