@@ -19,7 +19,7 @@ jobs:
       - name: 'Create .npmrc'
         shell: bash
         run: |
-         curl -u${{ secrets.JFROG }} "https://gpo.jfrog.io/gpo/api/npm/npm-local/ > angular1/.npmrc 
+         curl -u${{ secrets.JFROG }} "https://gpo.jfrog.io/gpo/api/npm/npm-local/" > angular1/.npmrc 
       - name: Install jQuery
         run: npm install @wk/components
         
