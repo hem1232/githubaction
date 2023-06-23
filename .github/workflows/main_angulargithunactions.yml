@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Authenticate JFrog
+        run: |
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" > .npmrc
+          echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> .npmrc
+          
       - uses: jfrog/setup-jfrog-cli@v3
         env:
           JF_URL: https://gpo.jfrog.io/gpo/api/npm/npm-local/
