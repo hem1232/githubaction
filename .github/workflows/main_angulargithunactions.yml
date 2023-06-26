@@ -15,12 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: healthplace/npmrc-registry-login-action@v1.0
+      - name: Set up JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v1
         with:
-          scope: '@wk'
-          registry: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
-          auth-token: ${{ secrets.JFROG }}
+          jfrog-cli-version: '1.47.1'
+
+      - name: JFrog Registry Login
+        run: |
+             jfrog rt config --url="https://gpo.jfrog.io/gpo/api/npm/npm-local/" --user="Hemant.Choudhari" --password="AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" --interactive=false
           
       - name: Install jQuery
         run: npm install @wk/components
