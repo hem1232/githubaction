@@ -26,7 +26,10 @@ jobs:
         run: echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> .npmrc
 
       - name: Authenticate with NPM registry
-        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=${{ secrets.JFROG }}" >> .npmrc
+        run: |
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> .npmrc
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:username=\Hemant.Choudhari" >> .npmrc
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:email=\hemant.choudhari@wolterskluwer.com" >> .npmrc
         
       - name: Install @wk/components
         run: npm install @wk/components
