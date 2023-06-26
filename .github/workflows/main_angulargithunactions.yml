@@ -23,10 +23,10 @@ jobs:
           password: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
           
       - name: Configure NPM registry
-        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" >> .npmrc
-        
+        run: echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> .npmrc
+
       - name: Authenticate with NPM registry
-        run: npm login --registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --scope=@wk --always-auth
+        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=${{ secrets.JFROG }}" >> .npmrc
         
       - name: Install @wk/components
         run: npm install @wk/components
