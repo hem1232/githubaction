@@ -9,7 +9,7 @@ on:
   
 jobs:
   Dev:
-    if: github.ref_name == 'dev1'
+    if: github.event.workflow_run.head_branch == 'dev1'
     runs-on: ubuntu-latest
     environment:
       name: 'Dev'
@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Print Head Ref
-        run: echo "${{ github.ref_name }}"
+        run: echo "${{ github.event.workflow_run.head_branch }}"
         
       - name: Download last artifact
         uses: blablacar/action-download-last-artifact@master
@@ -36,7 +36,7 @@ jobs:
           package: ${{ github.workspace }}/angular1
           
   Test:
-    if: github.ref_name == 'dev1'
+    if: github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     environment:
       name: 'Test'
@@ -77,16 +77,16 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
           
-      #- uses: trstringer/manual-approval@v1
-        #with:
-          #secret: ${{ github.TOKEN }}
-          #approvers: hem1232
-          #minimum-approvals: 1
-          #issue-title: "Deploying v1.3.5 to prod from staging"
-          #issue-body: "Please approve or deny the deployment of version v1.3.5."
-          #exclude-workflow-initiator-as-approver: false
-          #additional-approved-words: ''
-          #additional-denied-words: ''
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: hem1232
+          minimum-approvals: 1
+          issue-title: "Deploying v1.3.5 to prod from staging"
+          issue-body: "Please approve or deny the deployment of version v1.3.5."
+          exclude-workflow-initiator-as-approver: false
+          additional-approved-words: ''
+          additional-denied-words: ''
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
