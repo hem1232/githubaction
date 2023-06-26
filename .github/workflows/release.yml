@@ -9,7 +9,7 @@ on:
   
 jobs:
   Dev:
-    if: github.ref_name == 'dev1'
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     environment:
       name: 'Dev'
@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Print Head Ref
-        run: echo "${{ github.ref_name }}"
+        run: echo "${{ github.event.workflow_run.head_branch }}"
         
       - name: Download last artifact
         uses: blablacar/action-download-last-artifact@master
