@@ -24,7 +24,7 @@ jobs:
         run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=${{ secrets.JFGOG }}" > .npmrc
           
       - name: Installwk
-        run: npm install @wk/components
+        run: npm ci @wk/components
         
       - name: Install Angular CLI
         run: npm install -g @angular/cli
