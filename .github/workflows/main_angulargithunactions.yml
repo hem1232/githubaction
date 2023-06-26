@@ -18,11 +18,9 @@ jobs:
       - name: Set up JFrog CLI
         uses: jfrog/setup-jfrog-cli@v1
         with:
-          jfrog-cli-version: '1.47.1'
-
-      - name: JFrog Registry Login
-        run: |
-             jfrog config add artifactory-server --url="https://gpo.jfrog.io/gpo/api/npm/npm-local/" --user="Hemant.Choudhari" --password="AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" --interactive=false
+          url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
+          username: Hemant.Choudhari
+          password: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
   
       - name: Install jQuery
         run: npm install @wk/components
