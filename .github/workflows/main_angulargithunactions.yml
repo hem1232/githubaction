@@ -20,16 +20,22 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-          always-auth: true
-          registry-url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
           
       - name: Install Angular CLI
         run: npm install -g @angular/cli
-
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+           node-version: '16.x'
+           always-auth: true
+           registry-url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
+           
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
-
+        env:
+           NODE_AUTH_TOKEN: ${{secrets.JFROG}}
+           
       - name: Build Angular app
         working-directory: angular1
         run: ng build --prod
