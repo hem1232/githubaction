@@ -9,7 +9,7 @@ on:
   
 jobs:
   Dev:
-    if: ${{ github.event.workflow_run.head_branch }} == 'dev1'
+    if: github.event.workflow_run.head_branch == 'dev1'
     runs-on: ubuntu-latest
     environment:
       name: 'Dev'
