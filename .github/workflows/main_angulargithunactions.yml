@@ -21,6 +21,9 @@ jobs:
           url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
           username: Hemant.Choudhari
           password: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
+          
+      - name: Configure NPM registry
+        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" >> angular1/.npmrc
   
       - name: Install @wk/components
         run: npm install @wk/components
