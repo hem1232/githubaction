@@ -33,7 +33,9 @@ jobs:
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
-
+        env:
+           NODE_AUTH_TOKEN: ${{secrets.JFROG}}
+           
       - name: Build Angular app
         working-directory: angular1
         run: ng build --prod
