@@ -16,9 +16,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Install @wk/components
-        run: npm install @wk/components
-        
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
