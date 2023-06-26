@@ -19,11 +19,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      
-      - name: Authenticate with private NPM package
-        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=${{ secrets.JFGOG }}" > .npmrc
           
-      - name: Installwk
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+           registry-url: 'https://npm.pkg.github.com'
+           scope: '@wk'
+           
+      - name: Install wk
         run: npm ci @wk/components
         
       - name: Install Angular CLI
@@ -32,6 +35,8 @@ jobs:
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.JFROG }}
 
       - name: Build Angular app
         working-directory: angular1
