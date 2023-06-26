@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: jfrog/setup-jfrog-cli@v3
         env:
-          JF_URL: https://gpo.jfrog.io/gpo/api/npm/npm-local/
+          JF_URL: https://gpo.jfrog.io/artifactory/npm-local/
           JF_USER: Hemant.Choudhari
           JF_PASSWORD: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
   
