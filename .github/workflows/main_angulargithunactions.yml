@@ -22,7 +22,7 @@ jobs:
 
       - name: JFrog Registry Login
         run: |
-             jfrog rt config --url="https://gpo.jfrog.io/gpo/api/npm/npm-local/" --user="Hemant.Choudhari" --password="AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" --interactive=false
+             jfrog rt config --url="@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" --user="Hemant.Choudhari" --password="AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" --interactive=false
           
       - name: Install jQuery
         run: npm install @wk/components
