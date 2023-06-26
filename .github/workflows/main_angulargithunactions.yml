@@ -20,8 +20,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-          always-auth: true
-          registry-url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
           
       - name: Install Angular CLI
         run: npm install -g @angular/cli
