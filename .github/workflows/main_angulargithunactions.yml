@@ -19,7 +19,19 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-          
+      
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v1
+        with:
+           jfrog-url: https://gpo.jfrog.io/artifactory
+           jfrog-user: Hemant.Choudhari
+           jfrog-password: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
+      - name: Set npmrc
+        run: |
+          echo "always-auth=true" >> .npmrc
+          echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> .npmrc
+          echo "_auth=AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> .npmrc
+
       - name: Install Angular CLI
         run: npm install -g @angular/cli
         
