@@ -24,7 +24,10 @@ jobs:
           
       - name: Configure NPM registry
         run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" >> .npmrc
-  
+        
+      - name: Authenticate with NPM registry
+        run: npm login --registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --scope=@wk --always-auth
+        
       - name: Install @wk/components
         run: npm install @wk/components
         
