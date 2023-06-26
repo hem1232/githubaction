@@ -23,15 +23,6 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
         
-      - name: Ping Artifactory
-        uses: katcosgrove/jfrog-actions@master
-        with:
-            cmd: 'ping'
-        env:
-            auth: Hemant.Choudhari
-            apikey: ${{ secrets.JFROG }}
-            url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
-            
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
