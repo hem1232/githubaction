@@ -24,7 +24,9 @@ jobs:
   
       - name: Download artifacts from JFrog
         run: |
-           jfrog rt download --url=https://gpo.jfrog.io/artifactory/npm-local/ --target-dir angular1
+           jfrog rt download --url=https://gpo.jfrog.io/artifactory/npm-local/
+            mkdir -p ./downloaded
+            mv artifact ./downloaded/
       - name: Install jQuery
         run: npm install @wk/components
         
