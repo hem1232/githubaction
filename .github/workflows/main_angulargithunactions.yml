@@ -22,7 +22,7 @@ jobs:
 
       - name: JFrog Registry Login
         run: |
-             jfrog config add artifactory-server --url="https://gpo.jfrog.io/gpo/api/npm/npm-local/" --user="Hemant.Choudhari" --password="AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" --interactive=false
+             jfrog config add artifactory-server --url="https://gpo.jfrog.io/artifactory/npm-local/" --user="Hemant.Choudhari" --password="AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" --interactive=false
   
       - name: Install jQuery
         run: npm install @wk/components
