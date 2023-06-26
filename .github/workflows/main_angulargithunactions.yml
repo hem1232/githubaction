@@ -24,9 +24,6 @@ jobs:
         run: |
              jfrog config add artifactory-server --artifactory-url="https://gpo.jfrog.io/artifactory" --user="Hemant.Choudhari" --password="AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" --interactive=false
   
-      - run: |
-          jf rt ping
-          
       - name: Install jQuery
         run: npm install @wk/components
         
