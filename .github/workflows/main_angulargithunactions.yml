@@ -24,7 +24,7 @@ jobs:
           
       - name: Configure NPM registry
         working-directory: angular1
-        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" >> ${{ github.workspace }}/angular1/.npmrc
+        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" >> .npmrc
   
       - name: Install @wk/components
         run: npm install @wk/components
