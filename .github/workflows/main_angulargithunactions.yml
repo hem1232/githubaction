@@ -27,7 +27,7 @@ jobs:
            scope: '@wk'
            
       - name: Install wk
-        run: npm ci @wk/components
+        run: npm install @wk/components
         
       - name: Install Angular CLI
         run: npm install -g @angular/cli
