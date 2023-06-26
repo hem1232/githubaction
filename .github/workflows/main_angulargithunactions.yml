@@ -22,12 +22,7 @@ jobs:
           username: Hemant.Choudhari
           password: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
   
-      - name: Download artifacts from JFrog
-        run: |
-           jfrog rt download --url=https://gpo.jfrog.io/artifactory/npm-local/
-            mkdir -p ./downloaded
-            mv artifact ./downloaded/
-      - name: Install jQuery
+      - name: Install @wk/components
         run: npm install @wk/components
         
       - name: Set up Node.js version
