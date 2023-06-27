@@ -10,14 +10,15 @@ on:
       - dev1
 
 jobs:
+  call-workflow:
+    uses: hem1232/githubaction/.github/workflows/ReuseNpmInstall.yml@v1
   build:
+    needs: call-workflow
     name: build
     runs-on: ubuntu-latest
 
     steps:
-      - uses: hem1232/githubaction/.github/workflows/ReuseNpmInstall.yml@main
-      
-      - uses: actions/checkout@v2
+      #- uses: actions/checkout@v2
       
       #- name: Set up Node.js version
         #uses: actions/setup-node@v1
