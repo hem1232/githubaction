@@ -1,7 +1,10 @@
 name: ReuseNpmInstall
 on:
   workflow_call:
-
+    outputs:
+      firstword:
+        description: "The first output string"
+        value: ${{ jobs.Insatll.outputs.ng }}
 jobs:
   Insatll:
     name: Insatll
@@ -24,3 +27,13 @@ jobs:
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
+        
+  example_job:
+    name: Generate output
+    runs-on: ubuntu-latest
+    # Map the job outputs to step outputs
+    outputs:
+      output1: ${{ steps.step1.outputs.ng }}
+    steps:
+      - id: step1
+        run: echo "ng=ng" >> $GITHUB_OUTPUT
