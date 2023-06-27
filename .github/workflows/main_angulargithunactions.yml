@@ -19,21 +19,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-          
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-           node-version: '16.x'
-           
-      - name: Authenticate with private registry
-        run: echo "https://gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" >> ~/.npmrc
-        
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
