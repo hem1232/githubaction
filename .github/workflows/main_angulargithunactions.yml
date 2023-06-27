@@ -10,15 +10,27 @@ on:
       - dev1
 
 jobs:
-  call-workflow:
-    uses: hem1232/githubaction/.github/workflows/ReuseNpmInstall.yml@main
   build:
-    needs: call-workflow
     name: build
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+          
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+           node-version: '16.x'
+           
+      - name: Authenticate with private registry
+        run: echo "https://gpo.jfrog.io/gpo/api/npm/npm-local/:_authToken=\${{ secrets.JFROG }}" >> ~/.npmrc
+        
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
@@ -27,7 +39,7 @@ jobs:
            
       - name: Build Angular app
         working-directory: angular1
-        run: needs.call-workflow.outputs.ng  build --prod
+        run: ng build --prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
