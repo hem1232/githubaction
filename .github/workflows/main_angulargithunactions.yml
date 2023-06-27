@@ -27,7 +27,7 @@ jobs:
            
       - name: Build Angular app
         working-directory: angular1
-        run: ng build --prod
+        run: needs.call-workflow.outputs.ng  build --prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
