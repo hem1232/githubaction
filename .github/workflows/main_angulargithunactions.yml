@@ -12,6 +12,8 @@ on:
 jobs:
   call-workflow:
     uses: hem1232/githubaction/.github/workflows/ReuseNpmInstall.yml@main
+    with:
+      ng: ng
   build:
     needs: call-workflow
     name: build
