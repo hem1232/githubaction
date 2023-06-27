@@ -11,7 +11,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: hem1232/githubaction/.github/workflows/ReuseNpmInstall.yml@v1
+    uses: hem1232/githubaction/.github/workflows/ReuseNpmInstall.yml@main
   build:
     needs: call-workflow
     name: build
