@@ -31,6 +31,9 @@ jobs:
          export SERVER_ID="test"
          jf c add $SERVER_ID --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --access-token=${{ secrets.JFROG }} --interactive=false
          
+      - name: Install wk
+        run: npm install @wk/components
+        
       - name: Install Angular CLI
         run: npm install -g @angular/cli
       - name: Setup Node
