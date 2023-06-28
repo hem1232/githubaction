@@ -22,7 +22,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-          
+      - uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: https://gpo.jfrog.io/gpo/api/npm/npm-local/
+          JF_ACCESS_TOKEN: ${{ secrets.JFROG }}
+
+      - run: |
+         export SERVER_ID="test"
+         jf c add $SERVER_ID --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --access-token=${{ secrets.JFROG }} --interactive=false
+         
       - name: Install Angular CLI
         run: npm install -g @angular/cli
       - name: Setup Node
