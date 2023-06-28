@@ -12,3 +12,6 @@ on:
 jobs:
   build:
     uses: hem1232/githubaction/.github/workflows/ReuseNpmInstall.yml@main
+    with:
+      working-dir: 'angular1'
+      config-path: 'abc'
