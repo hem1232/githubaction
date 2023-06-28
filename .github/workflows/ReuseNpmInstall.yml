@@ -7,9 +7,9 @@ on:
         type: string
       working-dir:
         type: string
-   secrets:
-      token:
-        required: true
+   #secrets:
+      #token:
+        #required: true
      
 jobs:
   build:
