@@ -1,6 +1,16 @@
 name: UIBUILD
 on:
   workflow_call:
+   inputs:
+      config-path:
+        required: true
+        type: string
+      working-dir:
+        type: string
+   secrets:
+      token:
+        required: true
+     
 jobs:
   build:
     name: build
@@ -27,7 +37,7 @@ jobs:
            NODE_AUTH_TOKEN: ${{secrets.JFROG}}
            
       - name: Build Angular app
-        working-directory: angular1
+        working-directory: ${{ inputs.working-dir }}
         run: ng build --prod
 
       - name: Upload artifact for deployment job
