@@ -32,7 +32,7 @@ jobs:
          jf c add $SERVER_ID --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --access-token=${{ secrets.JFROG }} --interactive=false
          
       - name: Install wk
-        run: npm install @wk/components
+        run: npm install @wk/components --registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/
         env:
            NODE_AUTH_TOKEN: ${{secrets.JFROG}}
            
