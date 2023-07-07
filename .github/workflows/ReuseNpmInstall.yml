@@ -28,7 +28,6 @@ jobs:
           ARTIFACTORY_PASSWORD: ${{ secrets.JFROG }}
 
       - run: |
-         export SERVER_ID="test"
          jfrog rt config --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --user=hemant.choudhari --password=${secrets.JFROG} --interactive=false
          
       - name: Install wk
