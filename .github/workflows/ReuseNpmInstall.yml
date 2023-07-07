@@ -24,12 +24,12 @@ jobs:
           node-version: '16.x'
       - uses: jfrog/setup-jfrog-cli@v3
         env:
-          JF_URL: https://gpo.jfrog.io/gpo/api/npm/npm-local/
-          JF_ACCESS_TOKEN: ${{ secrets.JFROG }}
+          ARTIFACTORY_USERNAME: hemant.choudhari
+          ARTIFACTORY_PASSWORD: ${{ secrets.JFROG }}
 
       - run: |
          export SERVER_ID="test"
-         jf c add $SERVER_ID --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --access-token=${{ secrets.JFROG }} --interactive=false
+         jfrog rt config --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --user=hemant.choudhari --password=${secrets.JFROG} --interactive=false
          
       - name: Install wk
         run: npm install @wk/components --registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/
