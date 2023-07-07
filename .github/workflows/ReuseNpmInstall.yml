@@ -26,9 +26,11 @@ jobs:
         env:
           ARTIFACTORY_USERNAME: hemant.choudhari
           ARTIFACTORY_PASSWORD: ${{ secrets.JFROG }}
-
+      
+      - name: Authenticate with JFrog Artifactory
       - run: |
-         jfrog rt config --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --user=hemant.choudhari --password=${secrets.JFROG} --interactive=false
+         jfrog rt c --interactive=false
+         jfrog rt c --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --user=${ARTIFACTORY_USERNAME} --password=${ARTIFACTORY_PASSWORD}
          
       - name: Install wk
         run: npm install @wk/components --registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/
