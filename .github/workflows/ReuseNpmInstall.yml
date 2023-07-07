@@ -28,7 +28,7 @@ jobs:
           ARTIFACTORY_PASSWORD: ${{ secrets.JFROG }}
       
       - name: Authenticate with JFrog Artifactory
-      - run: |
+        run: |
          jfrog rt c --interactive=false
          jfrog rt c --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --user=${ARTIFACTORY_USERNAME} --password=${ARTIFACTORY_PASSWORD}
          
