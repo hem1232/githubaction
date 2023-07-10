@@ -43,7 +43,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
            node-version: '16.x'
-           
+      
+      - uses: nodef/npm-config.action@v1.0.0
+        with:
+           entries: |-
+              @wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/
+              access=public
+      
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
