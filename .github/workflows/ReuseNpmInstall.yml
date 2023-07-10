@@ -49,7 +49,13 @@ jobs:
          scope: '@wk'
          registry: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
          auth-token: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
-         
+      
+      - name: Configure npm for JFrog registry
+        run: echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> .npmrc
+
+      - name: Authenticate with JFrog registry
+        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local//:_authToken=AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> .npmrc
+        
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
