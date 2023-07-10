@@ -56,6 +56,11 @@ jobs:
       - name: Authenticate with JFrog registry
         run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local//:_authToken=cmVmdGtuOjAxOjE3MjA1MTQ0MjQ6bDdKS0dUR1VjTGhHcDQ0b1VEVFlIblFUQTdq" >> .npmrc
         
+      - uses: digitalvisioncz/npmrc-github-action@main
+        with:
+           token: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
+           registryUrl: 'gpo.jfrog.io/gpo/api/npm/npm-local/'
+           
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
