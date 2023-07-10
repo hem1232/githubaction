@@ -44,18 +44,6 @@ jobs:
         with:
            node-version: '16.x'
       
-      - uses: healthplace/npmrc-registry-login-action@v1.0
-        with:
-         scope: '@wk'
-         registry: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
-         auth-token: cmVmdGtuOjAxOjE3MjA1MTQ0MjQ6bDdKS0dUR1VjTGhHcDQ0b1VEVFlIblFUQTdq
-      
-      - name: Configure npm for JFrog registry
-        run: echo "@wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/" >> .npmrc
-
-      - name: Authenticate with JFrog registry
-        run: echo "//gpo.jfrog.io/gpo/api/npm/npm-local//:_authToken=cmVmdGtuOjAxOjE3MjA1MTQ0MjQ6bDdKS0dUR1VjTGhHcDQ0b1VEVFlIblFUQTdq" >> .npmrc
-        
       - uses: digitalvisioncz/npmrc-github-action@main
         with:
            token: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
