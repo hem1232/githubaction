@@ -44,13 +44,12 @@ jobs:
         with:
            node-version: '16.x'
       
-      - uses: nodef/npm-config.action@v1.0.0
+      - uses: healthplace/npmrc-registry-login-action@v1.0
         with:
-          path: ${{ github.workspace }}/angular1/.npmrc  # Path to the .npmrc file
-          reset: false        # Reset the .npmrc file
-          credentials: |-     # Credentials to configure [auto]
-            @wk:registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/=${{ secrets.JFROG }}
-           
+         scope: '@wk'
+         registry: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
+         auth-token: ${{secrets.JFROG}}
+         
       - name: Install dependencies
         working-directory: angular1
         run: npm ci
