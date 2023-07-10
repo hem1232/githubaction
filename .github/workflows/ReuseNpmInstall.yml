@@ -22,20 +22,20 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      - uses: jfrog/setup-jfrog-cli@v3
-        env:
-          ARTIFACTORY_USERNAME: hemant.choudhari
-          ARTIFACTORY_PASSWORD: ${{ secrets.JFROG }}
+      #- uses: jfrog/setup-jfrog-cli@v3
+        #env:
+          #ARTIFACTORY_USERNAME: hemant.choudhari
+          #ARTIFACTORY_PASSWORD: ${{ secrets.JFROG }}
       
-      - name: Authenticate with JFrog Artifactory
-        run: |
-         jfrog rt c --interactive=false
-         jfrog rt c --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --user=${ARTIFACTORY_USERNAME} --password=${ARTIFACTORY_PASSWORD}
+      #- name: Authenticate with JFrog Artifactory
+        #run: |
+         #jfrog rt c --interactive=false
+         #jfrog rt c --url=https://gpo.jfrog.io/gpo/api/npm/npm-local/ --user=${ARTIFACTORY_USERNAME} --password=${ARTIFACTORY_PASSWORD}
          
-      - name: Install wk
-        run: npm install @wk/components --registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/
-        env:
-           NODE_AUTH_TOKEN: ${{secrets.JFROG}}
+      #- name: Install wk
+        #run: npm install @wk/components --registry=https://gpo.jfrog.io/gpo/api/npm/npm-local/
+        #env:
+           #NODE_AUTH_TOKEN: ${{secrets.JFROG}}
            
       - name: Install Angular CLI
         run: npm install -g @angular/cli
