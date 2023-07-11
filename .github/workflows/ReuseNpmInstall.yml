@@ -52,7 +52,7 @@ jobs:
       - name: Configure JFrog CLI
         run: |
           echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:username=hemant.choudhari" >> ~/.jfrog-cli.conf
-          echo "//your-jfrog-instance-url/api/npm/npm-repo/:password=AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> ~/.jfrog-cli.conf
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:password=AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> ~/.jfrog-cli.conf
         
       - name: Install dependencies
         working-directory: angular1
