@@ -44,17 +44,15 @@ jobs:
         with:
            node-version: '16.x'
       
-      #- uses: healthplace/npmrc-registry-login-action@v1.0
-        #with:
-         #scope: '@wk'
-         #registry: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
-         #auth-token: 'AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf'
-         
-      - uses: raver119/set-npm-token-action@v1.3
-        with:
-          token: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
-          registry: "https://gpo.jfrog.io/gpo/api/npm/npm-local/"
-          scope: "@wk"
+      - name: Set up JFrog CLI
+        run: |
+          curl -fL https://getcli.jfrog.io | sh
+          export PATH=$PATH:~/.jfrog-cli-plugins/bin/
+
+      - name: Configure JFrog CLI
+        run: |
+          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:username=hemant.choudhari" >> ~/.jfrog-cli.conf
+          echo "//your-jfrog-instance-url/api/npm/npm-repo/:password=AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> ~/.jfrog-cli.conf
         
       - name: Install dependencies
         working-directory: angular1
