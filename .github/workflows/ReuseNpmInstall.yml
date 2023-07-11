@@ -44,15 +44,8 @@ jobs:
         with:
            node-version: '16.x'
       
-      - name: Ping Artifactory
-        uses: katcosgrove/jfrogcli-action@v1.0.0-beta
-        with:
-            cmd: 'ping'
-        env:
-            auth: hemant.choudhari
-            apikey: ${{ secrets.APIKEY }}
-            url: ${{ secrets.URL }}
-
+      - name: NPM Login
+        uses: Smaiil/npm-login@v1.0.2
         
       - name: Install dependencies
         working-directory: angular1
