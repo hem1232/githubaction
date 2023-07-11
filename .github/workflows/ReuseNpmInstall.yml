@@ -44,15 +44,15 @@ jobs:
         with:
            node-version: '16.x'
       
-      - name: Set up JFrog CLI
-        run: |
-          curl -fL https://getcli.jfrog.io | sh
-          export PATH=$PATH:~/.jfrog-cli-plugins/bin/
+      - name: Ping Artifactory
+        uses: katcosgrove/jfrog-actions@master
+        with:
+            cmd: 'ping'
+        env:
+            auth: hemant.choudhari
+            apikey: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
+            url: https://gpo.jfrog.io/gpo/api/npm/npm-local/
 
-      - name: Configure JFrog CLI
-        run: |
-          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:username=hemant.choudhari" >> ~/.jfrog-cli.conf
-          echo "//gpo.jfrog.io/gpo/api/npm/npm-local/:password=AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf" >> ~/.jfrog-cli.conf
         
       - name: Install dependencies
         working-directory: angular1
