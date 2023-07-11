@@ -50,8 +50,8 @@ jobs:
             cmd: 'ping'
         env:
             auth: hemant.choudhari
-            apikey: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
-            url: 'https://gpo.jfrog.io/gpo/api/npm/npm-local/'
+            apikey: ${{ secrets.JFROG }}
+            url: ${{ secrets.JFROG_URL }}
 
         
       - name: Install dependencies
