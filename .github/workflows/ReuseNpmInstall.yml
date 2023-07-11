@@ -50,8 +50,8 @@ jobs:
             cmd: 'ping'
         env:
             auth: hemant.choudhari
-            apikey: ${{ secrets.JFROG }}
-            url: ${{ secrets.JFROG_URL }}
+            apikey: ${{ secrets.APIKEY }}
+            url: ${{ secrets.URL }}
 
         
       - name: Install dependencies
