@@ -45,7 +45,7 @@ jobs:
            node-version: '16.x'
       
       - name: Ping Artifactory
-        uses: katcosgrove/jfrog-actions@master
+        uses: katcosgrove/jfrogcli-action@v1.0.0-beta
         with:
             cmd: 'ping'
         env:
