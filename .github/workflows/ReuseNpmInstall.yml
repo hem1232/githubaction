@@ -50,7 +50,7 @@ jobs:
           cli_cmd: |
             'jfrog rt ping'
         env:  
-          SERVER_URL: ${{ secrets.SERVER_URL }}           # Required (e.g. https://jfrogy.com/artifactory)
+          SERVER_URL: ${{ secrets.URL }}           # Required (e.g. https://jfrogy.com/artifactory)
           ACCESS_TYPE: api-key         # Required  (username-password, access-token, api-key)
           USERNAME: hemant.choudhari               # Required any of one of the following
           PASSWORD: AKCp8krVE5Xx7ubP4ui297suGaSJGe6RB9QHcNEnLEnNvY3Tpzo1z7QzYJLpbbfztSkao8eqf
